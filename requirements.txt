@@ -1,7 +1,11 @@
-numpy
-pandas
+numpy==1.23.5
+pandas==1.5.2
 matplotlib
 scipy
 seaborn
 ipykernel
 scikit-learn
+xgboost==1.7.2
+Flask
+flask_restful
+requests
