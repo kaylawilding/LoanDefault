@@ -9,3 +9,5 @@ xgboost==1.7.2
 Flask
 flask_restful
 requests
+pydantic
+kaggle

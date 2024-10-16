@@ -1,0 +1,29 @@
+# 1. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html) by selecting the installer that fits your OS version. Once it is installed you may have to restart your terminal (closing your terminal and opening again)
+# 2. In this directory, open terminal
+# 3. `conda env create -f environment.yml`
+# 4. `conda activate appenv`
+#
+
+name: loandefault
+channels:
+- conda-forge
+- defaults
+dependencies:
+- python=3.9
+- pip
+- pip:
+  - adjusttext
+  - descartes
+  - fastapi[all]
+  - PyJWT
+  - numpy>=1.19.0
+  - pandas>=1.2.0
+  - pyyaml
+  - pydantic
+  # dev dependencies
+  - black
+  - pytest
+  - SQLAlchemy
+  - pre-commit
+  - openpyxl
+  - -r ./src/requirements.txt
