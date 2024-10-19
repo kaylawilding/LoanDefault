@@ -19,3 +19,4 @@ fastapi
 python-multipart
 Path
 distutils-pytest
+setuptools
