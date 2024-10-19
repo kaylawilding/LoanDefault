@@ -9,7 +9,7 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- python=3.11
+- python=3.12
 - pip
 - pip:
   - adjusttext
@@ -26,4 +26,4 @@ dependencies:
   - SQLAlchemy
   - pre-commit
   - openpyxl
-  - -r ./src/requirements.txt
+  - -r ./app/backend/requirements.txt
