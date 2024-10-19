@@ -10,7 +10,7 @@ channels:
 - defaults
 dependencies:
 - python=3.11
-- pip
+- pip=24.2
 - pip:
   - adjusttext
   - descartes
