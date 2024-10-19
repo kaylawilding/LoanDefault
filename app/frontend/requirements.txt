@@ -17,4 +17,4 @@ uvicorn
 fastapi
 python-multipart
 Path
-distutils
+distutils-pytest
