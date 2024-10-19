@@ -11,3 +11,5 @@ flask_restful
 requests
 pydantic
 kaggle
+streamlit
+mlflow
