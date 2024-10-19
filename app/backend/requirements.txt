@@ -19,4 +19,4 @@ fastapi
 python-multipart
 Path
 distutils-pytest
-setuptools
+setuptools==75.2.0
