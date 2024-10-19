@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np 
 from sklearn.preprocessing import OneHotEncoder
 import pickle
+from pathlib import Path
 
 
 def transform_data(data: pd.DataFrame) -> pd.DataFrame:
@@ -69,7 +70,8 @@ def add_missing_cols(data: pd.DataFrame) -> pd.DataFrame:
         Add missing columns to the dataframe
     """
     #load the model
-    with open('backend/api/endpoints/dependencies/logreg_model.pickle', 'rb') as f:
+    model_path = Path(__file__).parent / 'logreg_model.pickle'
+    with open(model_path, 'rb') as f:
         model = pickle.load(f)
     for col in model.feature_names_in_:
         if col not in data.columns:

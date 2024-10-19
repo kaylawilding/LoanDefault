@@ -22,7 +22,8 @@ def Predict(InputFile: UploadFile = File(...)) -> Any:
     # Transform the data
     df = transform_data(df)
     # Get the model
-    with open('backend/api/endpoints/dependencies/logreg_model.pickle', 'rb') as f:
+
+    with open('./endpoints/dependencies/logreg_model.pickle', 'rb') as f:
         model = pickle.load(f)
     # Get the predictions
     predictions = model.predict(df)

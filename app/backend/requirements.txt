@@ -13,3 +13,8 @@ pydantic
 kaggle
 streamlit
 mlflow
+docker
+uvicorn
+fastapi
+python-multipart
+Path
