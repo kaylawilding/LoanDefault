@@ -13,6 +13,15 @@ if file is not None:
     st.write(f"Your loan default predictions are: {predictions}")
 
 
-option = st.selectbox(
-   'How would you like to be contacted?',
-    ('Email', 'Home phone', 'Mobile phone'))
+gender = st.selectbox(
+   'Gender',
+    ('Female', 'Male', 'Joint'))
+
+year = st.selectbox(
+   'Year',
+    ('2010', '2011', '2012', '2013', '2014', 
+     '2015', '2016', '2017', '2018', '2019', 
+     '2020', '2021', '2022', '2023', '2024'),
+     placeholder = "Select Year")
+
+loan_amount = st.number_input('Loan Amount', min_value=0, max_value=10000000, value=0) 
