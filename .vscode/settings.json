@@ -1,0 +1,14 @@
+{
+    "containerApps.deploymentConfigurations": [
+        {
+            "label": "backend",
+            "type": "AcrDockerBuildRequest",
+            "dockerfilePath": "app/backend/dockerfile",
+            "srcPath": "app/backend",
+            "envPath": ".env",
+            "resourceGroup": "loandefault",
+            "containerApp": "backend",
+            "containerRegistry": "loandefault8c7cce"
+        }
+    ]
+}
