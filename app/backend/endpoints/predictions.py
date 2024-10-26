@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from .dependencies.transform import transform_data, extra_cols, missings, encode, add_missing_cols
 from typing import Any
 from .dependencies.prediction import prediction
-
+from backend.models import loandata
 
 #instatntiate router
 router = APIRouter()
@@ -26,12 +26,12 @@ def intake_file(InputFile: UploadFile = File(...)) -> Any:
     return predictions
 
 @router.post("/intake_form")
-def intake_form(loan_dict: json) -> Any:
+def intake_form(loan_data: loandata.LoanData) -> Any:
     """
     Turn form dictionary into pandas dataframe
     """
     # Convert the data to a pandas dataframe
-    df = pd.DataFrame([loan_dict])
+    df = pd.DataFrame([loan_data.dict()])
     df_encoded = encode(df)
     df_complete = add_missing_cols(df_encoded)
     predictions = prediction(df_complete)

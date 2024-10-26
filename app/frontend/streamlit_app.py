@@ -32,11 +32,11 @@ with st.form('LoanApp'):
     loan_amount = st.number_input('Loan Amount', min_value=0, max_value=10000000, value=0) 
     submit_for_prediction = st.form_submit_button("Submit")
     if submit_for_prediction:
-        loan_dict = {
+        loan_data = {
             'Gender': gender,
             'year': year,
             'loan_amount': loan_amount
         }
-        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", json=loan_dict)
+        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", json=loan_data)
         st.write(f"Your loan default predictions are: {response}")
 
