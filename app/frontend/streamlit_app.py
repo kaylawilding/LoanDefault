@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import os
+import pandas as pd
 
 BACKEND_URL = os.getenv('BACKEND_URL')
 
@@ -11,9 +12,8 @@ st.write('## Upload CSV File')
 file = st.file_uploader("Upload file", type=["csv"])
 
 if file is not None:
-    df = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_csv", files={"InputFile": file})
-    response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/predict", df=df)
-    st.write(f"Your loan default predictions are: {response.json()}")
+    response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_file", files={"InputFile": file})
+    st.write(f"Your loan default predictions are: {response}")
 
 ## Form Option
 st.write('## Fill out the form')
@@ -37,7 +37,7 @@ with st.form('LoanApp'):
             'year': year,
             'loan_amount': loan_amount
         }
-        df = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", loan_dict=loan_dict)
-        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/predict", df=df)
-        st.write(f"Your loan default predictions are: {response.json()}")
+        df = pd.DataFrame([loan_dict])
+        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", loan_dict=loan_dict)
+        st.write(f"Your loan default predictions are: {response}")
 

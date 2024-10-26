@@ -5,7 +5,7 @@ import json
 import pandas as pd
 import uuid
 from sklearn.metrics import accuracy_score
-from .dependencies.transform import transform_data
+from .dependencies.transform import transform_data, extra_cols, missings, encode, add_missing_cols
 from typing import Any
 from .dependencies.prediction import prediction
 
@@ -14,32 +14,27 @@ from .dependencies.prediction import prediction
 router = APIRouter()
 
 @router.post("/intake_file")
-def intake_file(InputFile: UploadFile = File(...)) -> pd.DataFrame:
+def intake_file(InputFile: UploadFile = File(...)) -> Any:
     """
     Turn file into a pandas dataframe
     """
     # Convert the data to a pandas dataframe
     #Right now assume and support csv files
     df = pd.read_csv(InputFile.file)
-    return df
+    df = transform_data(df)
+    predictions = prediction(df)
+    return predictions
 
 @router.post("/intake_form")
-def intake_form(loan_dict: dict) -> pd.DataFrame:
+def intake_form(loan_dict: dict) -> Any:
     """
     Turn form dictionary into pandas dataframe
     """
     # Convert the data to a pandas dataframe
     df = pd.DataFrame([loan_dict])
-    return df
-
-@router.post("/predict")
-def predict(df: pd.DataFrame) -> Any:
-    """
-    Predict the loan default status
-    """
-    # Transform the data
-    df = transform_data(df)
-    predictions = prediction(df)
+    df_encoded = encode(df)
+    df_complete = add_missing_cols(df_encoded)
+    predictions = prediction(df_complete)
     return predictions
     
 

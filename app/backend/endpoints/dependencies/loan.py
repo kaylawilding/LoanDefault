@@ -1,17 +1,8 @@
 import pandas as pd
 import numpy as np
-from pydantic import BaseModel
 from transform import encode, add_missing_cols
 
-
-# Properties to receive via API on creation
-class Loan(BaseModel):
-    Gender: str
-    year: str
-    loan_amount: int
-
-
-def create_dataset(loan:Loan) -> pd.DataFrame:
+def create_dataset(loan:dict) -> pd.DataFrame:
     """
     Creates a dataframe with the class
     """
