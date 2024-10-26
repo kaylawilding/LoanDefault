@@ -37,7 +37,6 @@ with st.form('LoanApp'):
             'year': year,
             'loan_amount': loan_amount
         }
-        df = pd.DataFrame([loan_dict])
-        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", loan_dict=loan_dict)
+        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", json=loan_dict)
         st.write(f"Your loan default predictions are: {response}")
 

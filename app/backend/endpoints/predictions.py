@@ -26,7 +26,7 @@ def intake_file(InputFile: UploadFile = File(...)) -> Any:
     return predictions
 
 @router.post("/intake_form")
-def intake_form(loan_dict: dict) -> Any:
+def intake_form(loan_dict: json) -> Any:
     """
     Turn form dictionary into pandas dataframe
     """
