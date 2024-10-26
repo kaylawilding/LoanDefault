@@ -11,3 +11,8 @@ if file is not None:
     st.write(response.json())
     predictions = response.json()
     st.write(f"Your loan default predictions are: {predictions}")
+
+
+option = st.selectbox(
+   'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone'))
