@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .endpoints import predictions
+from endpoints import predictions
 
 #Instatntiate the router
 app = FastAPI()

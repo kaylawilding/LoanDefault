@@ -2,7 +2,7 @@ version: '3.8'
 services:
   frontend:
     build: frontend
-    image: wildingka/loandefaultapp:frontend-v1  # Same repository, different tag for frontend
+    image: wildingka/loandefaultapptest:frontend-v1  # Same repository, different tag for frontend
     ports:
       - 8501:8501
     depends_on:
@@ -16,7 +16,7 @@ services:
     
   backend:
     build: backend
-    image: wildingka/loandefaultapp:backend-v1  # Same repository, different tag for backend
+    image: wildingka/loandefaultapptest:backend-v1  # Same repository, different tag for backend
     ports:
       - 8000:8000
     volumes:

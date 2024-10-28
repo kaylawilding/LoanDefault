@@ -12,7 +12,7 @@ st.write('## Upload CSV File')
 file = st.file_uploader("Upload file", type=["csv"])
 
 if file is not None:
-    response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_file", files={"InputFile": file})
+    response = requests.post("https://loandefaultapptest.azurewebsites.net/predictions/intake_file", files={"InputFile": file})
     st.write(f"Your loan default predictions are: {response}")
 
 ## Form Option
@@ -37,6 +37,6 @@ with st.form('LoanApp'):
             'year': year,
             'loan_amount': loan_amount
         }
-        response = requests.post("https://loandefaultbackend-ayehfjhgd7afgnfv.westus-01.azurewebsites.net/predictions/intake_form", json=loan_data)
+        response = requests.post("https://loandefaultapptest.azurewebsites.net/predictions/intake_form", json=loan_data)
         st.write(f"Your loan default predictions are: {response}")
 

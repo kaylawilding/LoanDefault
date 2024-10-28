@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from .dependencies.transform import transform_data, extra_cols, missings, encode, add_missing_cols
 from typing import Any
 from .dependencies.prediction import prediction
-from backend.models import loandata
+from models import loandata
 
 #instatntiate router
 router = APIRouter()
